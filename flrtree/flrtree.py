@@ -112,6 +112,15 @@ def _is_lower_than(key, uq):
 
 class LRTree:
     def __init__(self, data, dim_num=None, leaf_size=1):
+        """build a fractional cascading layered range tree
+        
+        arguments:
+        data     -- a [n,d] list like input, d>=2 is the dimension number
+        
+        space complexity: O(n*log(n)**d)
+        the time complexity of construction: O(n*log(n)**d)
+        note: the data will not be copied, so once the data is changed the results will be wrong!
+        """
         self.data = data
         if dim_num is None:
             dim_num = len(data[0])
@@ -219,6 +228,11 @@ class LRTree:
         return sorted_keys[-1]
     
     def query(self, lower, upper):
+        """query a list of all i where data[i][j]<=upper[j] and data[i][j]>=lower[j] (0<j<d)
+        
+        the query time complexity is O(log(n)**d+k), where k is the length of result list
+        """
+        
         lq = _DictComparable()
         lq.value = lower
         lq.index = -1
