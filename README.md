@@ -3,7 +3,7 @@ pyflrtree
 
 Pure python implementation of factional cascading layered range tree
 
-  - only depends on python standard libraries
+  - only depends on python standard libraries when using (testing needs nose)
   - `O(n*log(n)**d)` space complexity
   - `O(n*log(n)**d)` constructing time complexity
   - `O(log(n)**(d-1)+k)` querying time complexity
@@ -22,4 +22,10 @@ from flrtree import LRTree
 tree=LRTree(data)
 
 indes=tree.query(lower,upper)
+```
+
+run some blackbox tests:
+```
+import flrtree
+flrtree.test()
 ```
