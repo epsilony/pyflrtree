@@ -1,6 +1,7 @@
 import random
-from flrtree.fltree import LRTree
+from flrtree.flrtree import LRTree
 from nose.tools import assert_list_equal
+import nose
 
 class RawSearcher:
     
@@ -62,7 +63,7 @@ def test_by_random_3d():
     dim_num=3
     data_len=1000
     sample_num=10
-    outer_loop_num=100
+    outer_loop_num=10
     
     for _o in range(outer_loop_num):
         data=random_coord(dim_num, data_len)
@@ -79,3 +80,6 @@ def test_by_random_3d():
             act.sort()
             
             assert_list_equal(exp,act)
+
+def _test_all():
+    nose.run()
